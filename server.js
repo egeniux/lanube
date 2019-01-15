@@ -1,8 +1,30 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const post = require('./routes/api/post');
+const marketplace = require('./routes/api/marketplace');
 
 const app = express();
 
+// DB Config
+const db = require('./config/keys').mongoURI;
+
+//Connect to MongoDB
+mongoose
+  .connect(db)
+  .then(() => console.log('MongoDB Connected!'))
+  .catch(err => console.log(err));
+
 app.get('/', (req, res) => res.send('Hello world!'));
+
+//Use Routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/post', post);
+app.use('/api/marketplace', marketplace);
+
 
 const port = process.env.PORT || 5000;
 
