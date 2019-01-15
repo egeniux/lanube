@@ -5,6 +5,7 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const post = require('./routes/api/post');
 const marketplace = require('./routes/api/marketplace');
+const instances = require('./routes/api/instances');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/post', post);
 app.use('/api/marketplace', marketplace);
+app.use('/api/instances', instances);
 
 
 const port = process.env.PORT || 5000;
